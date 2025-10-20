@@ -5,10 +5,12 @@ public class PlayerMovment : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public float Speed;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public GameObject thing;
+
+    private  NweFieldRay _ray;
     void Start()
     {
-
+        _ray = thing.GetComponent<NweFieldRay>();
     }
 
     // Update is called once per frame
@@ -30,5 +32,15 @@ public class PlayerMovment : MonoBehaviour
         {
             this.transform.Translate(Vector3.back * Speed * Time.deltaTime);
         }
+
+        Tackle();
+    }
+
+    private void Tackle()
+    {
+        if (_ray.hit.collider.CompareTag("Player") && Vector3.Distance(this.transform.position, _ray.target.transform.position) < 4) {
+            Debug.Log("hitting player and it is CLOSE!");
+            }
+
     }
 }

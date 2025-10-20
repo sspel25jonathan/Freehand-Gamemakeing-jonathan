@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class NweFieldRay : MonoBehaviour
 {
+    public RaycastHit hit;
     public LayerMask layerMask;
 
     public float range;
@@ -20,9 +21,9 @@ public class NweFieldRay : MonoBehaviour
         transform.LookAt(target.transform, Vector3.forward);
     }
 
-    private IEnumerator ShootingRays()
+    public IEnumerator ShootingRays()
     {
-        RaycastHit hit;
+        
         while (true){
             Physics.Raycast(thing.transform.position, thing.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask);
             //TOBBE TESTAR
